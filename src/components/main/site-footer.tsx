@@ -29,19 +29,7 @@ const SiteFooter = () => {
               ),
           )}
         </div>
-        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-          {siteConfig.footerItems.map(
-            (item, i) =>
-              item.href && (
-                <li
-                  key={i}
-                  className="text-xs text-foreground/60 hover:underline sm:text-sm"
-                >
-                  <Link href={item.href}>{item.title}</Link>
-                </li>
-              ),
-          )}
-        </ul>
+
         <p className="text-xs text-foreground/60 sm:text-sm">
           @ 2023-{new Date().getFullYear()} {siteConfig.author}.
         </p>
