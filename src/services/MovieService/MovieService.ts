@@ -80,30 +80,30 @@ class MovieService extends BaseService {
         }/day?language=en-US&with_original_language=en&page=${req.page ?? 1}`;
       case RequestType.TOP_RATED:
         return `/${req.mediaType}/top_rated?page=${
-          req.page ?? 1
+          req.page ?? 2
         }&with_original_language=en&language=en-US`;
       case RequestType.NETFLIX:
         return `/discover/${
           req.mediaType
         }?with_networks=213&with_original_language=en&language=en-US&page=${
-          req.page ?? rndInt
+          req.page ?? 3
         }`;
       case RequestType.POPULAR:
         return `/${
           req.mediaType
         }/popular?language=en-US&with_original_language=en&page=${
-          req.page ?? rndInt
+          req.page ?? 2
         }&without_genres=${Genre.TALK},${Genre.NEWS}`;
       case RequestType.GENRE:
         return `/discover/${req.mediaType}?with_genres=${
           req.genre
         }&language=en-US&with_original_language=en&page=${
-          req.page ?? rndInt
+          req.page ?? 2
         }&without_genres=${Genre.TALK},${Genre.NEWS}`;
       case RequestType.KOREAN:
         return `/discover/${req.mediaType}?with_genres=${
           req.genre
-        }&with_original_language=ko&language=en-US&page=${req.page ?? rndInt}`;
+        }&with_original_language=ko&language=en-US&page=${req.page ?? 5}`;
       default:
         throw new Error(
           `request type ${req.requestType} is not implemented yet`,
@@ -118,11 +118,6 @@ class MovieService extends BaseService {
   }) {
     return this.axios(baseUrl).get<TmdbPagingResponse>(this.urlBuilder(req));
   }
-
-  static randomIntFromInterval(min, max){
-    return Math.floor(Math.random() * (max - min + 1));
-  }
-  const rndInt = randomIntFromInterval(1, 25);
 
   static getShows = cache(async (requests: ShowRequest[]) => {
     const shows: CategorizedShows[] = [];
