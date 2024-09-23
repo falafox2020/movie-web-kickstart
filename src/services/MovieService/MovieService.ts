@@ -26,6 +26,16 @@ const requestTypesNeedUpdateMediaType = [
 ];
 const baseUrl = 'https://api.themoviedb.org/3';
 
+function getRandomInt(min: number, max: number): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const randomInt1 = getRandomInt(1, 20);
+const randomInt2 = getRandomInt(1, 40);
+const randomInt3 = getRandomInt(1, 60);
+const randomInt4 = getRandomInt(1, 80);
+
 class MovieService extends BaseService {
   static async findCurrentMovie(id: number, pathname: string): Promise<Show> {
     const data = await Promise.allSettled([
@@ -77,33 +87,33 @@ class MovieService extends BaseService {
       case RequestType.TRENDING:
         return `/trending/${
           req.mediaType
-        }/day?language=en-US&with_original_language=en&page=${req.page ?? 1}`;
+        }/day?language=en-US&with_original_language=en&page=${req.page ?? randomInt1}`;
       case RequestType.TOP_RATED:
         return `/${req.mediaType}/top_rated?page=${
-          req.page ?? 2
+          req.page ?? randomInt2
         }&with_original_language=en&language=en-US`;
       case RequestType.NETFLIX:
         return `/discover/${
           req.mediaType
         }?with_networks=213&with_original_language=en&language=en-US&page=${
-          req.page ?? 3
+          req.page ?? randomInt3
         }`;
       case RequestType.POPULAR:
         return `/${
           req.mediaType
         }/popular?language=en-US&with_original_language=en&page=${
-          req.page ?? 2
+          req.page ?? randomInt4
         }&without_genres=${Genre.TALK},${Genre.NEWS}`;
       case RequestType.GENRE:
         return `/discover/${req.mediaType}?with_genres=${
           req.genre
         }&language=en-US&with_original_language=en&page=${
-          req.page ?? 2
+          req.page ?? randomInt3
         }&without_genres=${Genre.TALK},${Genre.NEWS}`;
       case RequestType.KOREAN:
         return `/discover/${req.mediaType}?with_genres=${
           req.genre
-        }&with_original_language=ko&language=en-US&page=${req.page ?? 5}`;
+        }&with_original_language=ko&language=en-US&page=${req.page ?? randomInt4}`;
       default:
         throw new Error(
           `request type ${req.requestType} is not implemented yet`,
@@ -166,5 +176,7 @@ class MovieService extends BaseService {
     return data;
   });
 }
+
+
 
 export default MovieService;
