@@ -87,7 +87,7 @@ class MovieService extends BaseService {
       case RequestType.TRENDING:
         return `/trending/${
           req.mediaType
-        }/day?language=en-US&with_original_language=en&page=${req.page ?? randomInt1}`;
+        }/week?language=en-US&with_original_language=en&page=${req.page ?? 1}`;
       case RequestType.TOP_RATED:
         return `/${req.mediaType}/top_rated?page=${
           req.page ?? randomInt2
