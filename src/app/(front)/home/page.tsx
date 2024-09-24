@@ -32,6 +32,14 @@ export default async function Home() {
       visible: true,
     },
     {
+      title: 'Popular Movies',
+      req: {
+        requestType: RequestType.TOP_RATED,
+        mediaType: MediaType.MOVIE,
+      },
+      visible: true,
+    },
+    {
       title: 'Korean Movies',
       req: {
         requestType: RequestType.KOREAN,
@@ -59,6 +67,24 @@ export default async function Home() {
       visible: true,
     },
     {
+      title: 'Adventure Movies',
+      req: {
+        requestType: RequestType.GENRE,
+        mediaType: MediaType.MOVIE,
+        genre: Genre.ADVENTURE,
+      },
+      visible: true,
+    },
+    {
+      title: 'Animated Movies',
+      req: {
+        requestType: RequestType.GENRE,
+        mediaType: MediaType.MOVIE,
+        genre: Genre.ANIMATION,
+      },
+      visible: true,
+    },
+    {
       title: 'Romance Movies',
       req: {
         requestType: RequestType.GENRE,
@@ -68,11 +94,20 @@ export default async function Home() {
       visible: true,
     },
     {
-      title: 'Scary Movies',
+      title: 'Horror Movies',
       req: {
         requestType: RequestType.GENRE,
         mediaType: MediaType.MOVIE,
-        genre: Genre.THRILLER,
+        genre: Genre.HORROR,
+      },
+      visible: true,
+    },
+    {
+      title: 'Crime Movies',
+      req: {
+        requestType: RequestType.GENRE,
+        mediaType: MediaType.MOVIE,
+        genre: Genre.CRIME,
       },
       visible: true,
     },
