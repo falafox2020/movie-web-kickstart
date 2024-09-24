@@ -37,6 +37,7 @@ function EmbedPlayer(props: EmbedPlayerProps) {
         backgroundColor: '#000',
       }}>
       <iframe
+        sandbox='allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation'
         ref={ref}
         width="100%"
         height="100%"
